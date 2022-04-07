@@ -33,6 +33,16 @@ const RocketType = new GraphQLObjectType({
   }),
 });
 
+//Landing pad type
+const LandingPadType = new GraphQLObjectType({
+  name: "LandingPad",
+  fields: () => ({
+    id: { type: GraphQLString },
+    full_name: { type: GraphQLString },
+    details: { type: GraphQLString },
+  }),
+});
+
 //Root Query
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -64,10 +74,18 @@ const RootQuery = new GraphQLObjectType({
           .then((res) => res.data);
       },
     },
+    LandingPads: {
+      type: new GraphQLList(LandingPadType),
+      resolve(parent, args) {
+        return axios
+          .get("https://api.spacexdata.com/v3/landpads")
+          .then((res) => res.data);
+      },
+    },
     rocket: {
       type: RocketType,
       args: {
-      id: { type: GraphQLString },
+        id: { type: GraphQLString },
       },
       resolve(parent, args) {
         return axios
