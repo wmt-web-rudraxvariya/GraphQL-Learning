@@ -10,6 +10,7 @@ const {
 
 //launch type
 
+
 const LaunchType = new GraphQLObjectType({
   name: "Launch",
   fields: () => ({
@@ -28,6 +29,7 @@ const linksType = new GraphQLObjectType({
   name: "Links",
   fields: () => ({
     mission_patch: { type: GraphQLString },
+    video_link: { type: GraphQLString },
   }),
 });
 

@@ -1,10 +1,18 @@
 import React from "react";
 import Moment from "react-moment";
+import { useNavigate } from "react-router-dom";
 const LaunchItems = ({ launch }) => {
-  console.log("data", launch);
+  const navigate = useNavigate();
+
   return (
     <>
-      <div className="card" style={{ width: "20rem", margin: "10px 0px" }}>
+      <div
+        className="card"
+        style={{ width: "18rem", margin: "10px 10px", cursor: "pointer" }}
+        onClick={() => {
+          navigate(`/launch/${launch.flight_number}`);
+        }}
+      >
         <img src={launch.links.mission_patch} alt="" />
         <div className="card-body">
           <h5
