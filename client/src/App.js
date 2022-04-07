@@ -1,11 +1,20 @@
 import "./App.css";
-import Logo from "./logo192.png";
+import Launches from "./components/Launches";
+import Layout from "./components/Layout";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <div className="d-flex gap-2 p-2 align-items-center">
-      <img src={Logo} alt="logo" className="w-auto mr-2" height="45px" />
-      <h4>Specex</h4>
-    </div>
+    <>
+      <Router>
+        <Layout>
+          <div className="container-fluid">
+            <Routes>
+              <Route path="/" element={<Launches />} />
+            </Routes>
+          </div>
+        </Layout>
+      </Router>
+    </>
   );
 }
 
